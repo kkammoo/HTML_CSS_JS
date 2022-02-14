@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>산수를 풀어봅시다.</title>
+  </head>
+  <body>
+    <h3>산수 문제를 풀어 봅시다.</h3>
+    <p>자동으로 문제가 만들어집니다. 답 입력 후 채점 버튼을 누르세요.</p>
+    <p>다시 버튼을 누르면 새로운 문제가 출력됩니다. 나누기 결과는 정수입니다.</p>
+    <hr />
+    <table>
+      <tr>
+        <td class="question">5*6</td>
+        <td><input type="text" class="answer" name="" id="" /></td>
+      </tr>
+      <tr>
+        <td class="question">7+5*3</td>
+        <td><input type="text" class="answer" name="" id="" /></td>
+      </tr>
+      <tr>
+        <td class="question">23*2</td>
+        <td><input type="text" class="answer" name="" id="" /></td>
+      </tr>
+      <tr>
+        <td class="question">35-7</td>
+        <td><input type="text" class="answer" name="" id="" /></td>
+      </tr>
+      <tr class="endLine">
+        <td><button id="result">채점</button></td>
+        <td><span id="count">0</span><button id="again">다시</button></td>
+      </tr>
+    </table>
+    <script>
+      const $ques = document.querySelectorAll('table .question');
+      const $answer = document.querySelectorAll('table .answer');
+      const $count = document.getElementById('count');
+
+      let sum = 0; // 맞춘 문제 개수
+
+      const $result = document.getElementById('result');
+      $result.addEventListener('click', calculate, false);
+      const $again = document.getElementById('again');
+      $again.addEventListener('click', makeQues, false);
+
+      // 문제 만들기
+      function makeQues(evt) {
+        for (let i = 0; i < $ques.length; i++) {
+          const operator = ['+', '-', '*', '/']; // 사칙연산 배열
+          const op1 = Math.floor(Math.random() * 100); // 0~99 사이의 랜덤한 정수 발생.
+          const op2 = Math.floor(Math.random() * 100); // 0~99 사이의 랜덤한 정수 발생.
+          const choiceOper = Math.floor(Math.random() * operator.length); // 사칙연산 배열의 랜덤한 인덱스 번호.
+
+          const expression = op1 + operator[choiceOper] + op2; // 수식
+
+          $ques[i].style.textDecoration = 'none';
+          $ques[i].textContent = expression;
+
+          // 입력했던 값 초기화
+          for (let i = 0; i < $answer.length; i++) {
+            $answer[i].value = '';
+          }
+        }
+      }
+
+      // 채점하기
+      function calculate(evt) {
+        // 채점
+        for (let i = 0; i < $ques.length; i++) {
+          // 정답이면
+          if (window.eval($ques[i].textContent) == window.parseInt($answer[i].value)) {
+            sum++;
+            //틀리면
+          } else {
+            $ques[i].style.textDecoration = 'line-through';
+          }
+        }
+        // 채점 결과
+        $count.textContent = sum;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    div {
+      box-sizing: border-box;
+      display: inline-block;
+      width: 25%; height: 50px;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    function makeColor() {
+      const R = Math.floor(Math.random()*256);
+      const G = Math.floor(Math.random()*256);
+      const B = Math.floor(Math.random()*256);
+      return 'RGB('+R+','+G+','+B+')';
+    }
+    for (let i=0; i<16; i++){
+      let divTag = '<div style="background-color:'
+      const color = makeColor();
+      divTag += color;
+      divTag += '">'+color+'</div>';
+      document.write(divTag);
+    }
+  </script>
+  <!-- <div style="background-color: yellow;">RGB(1, 2, 3)</div>
+  <div style="background-color: green;">RGB(1, 2, 3)</div>
+  <div style="background-color: pink;">RGB(1, 2, 3)</div>
+  <div style="background-color: orange;">RGB(1, 2, 3)</div>
+  <div style="background-color: yellow;">RGB(1, 2, 3)</div>
+  <div style="background-color: green;">RGB(1, 2, 3)</div>
+  <div style="background-color: pink;">RGB(1, 2, 3)</div>
+  <div style="background-color: orange;">RGB(1, 2, 3)</div>
+  <div style="background-color: yellow;">RGB(1, 2, 3)</div>
+  <div style="background-color: green;">RGB(1, 2, 3)</div>
+  <div style="background-color: pink;">RGB(1, 2, 3)</div>
+  <div style="background-color: orange;">RGB(1, 2, 3)</div>
+  <div style="background-color: yellow;">RGB(1, 2, 3)</div>
+  <div style="background-color: green;">RGB(1, 2, 3)</div>
+  <div style="background-color: pink;">RGB(1, 2, 3)</div>
+  <div style="background-color: orange;">RGB(1, 2, 3)</div> -->
+</body>
+</html>

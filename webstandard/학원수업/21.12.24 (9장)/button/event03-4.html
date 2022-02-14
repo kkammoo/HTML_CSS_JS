@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트 리스너 03 - 화살표 함수를 매개변수로</title>
+  <script>
+    
+    addEventListener("DOMContentLoaded", () => {
+      const $button = document.querySelector('button');
+      $button.addEventListener("click", evt => {
+        console.log(evt);
+        console.log('클릭!');
+        alert('클릭!');
+        const $button = evt.target;
+        $button.style.backgroundColor = 'yellow';
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <p>addEventListener() 사용</p>
+  <button>클릭</button>
+</body>
+
+</html>

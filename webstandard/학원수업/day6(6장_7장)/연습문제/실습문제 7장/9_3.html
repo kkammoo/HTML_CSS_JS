@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>book 객체 만들기03</title>
+</head>
+<body>
+  <h3>book 객체 만들기</h3>
+  <hr>
+  <script>
+    // 생성자 함수 정의
+    function Book(){
+      this.title = "HTML5";
+      this.author = "황기태";
+      this.price = 20000;
+    }
+    const book = new Book(); // 생성자 호출 (인스턴스화)
+    
+    document.write("book : " + book.title + ', ' + book.author + ', ' + book.price);
+    
+  </script>
+</body>
+</html>

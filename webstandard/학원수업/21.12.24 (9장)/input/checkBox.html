@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="#">
+      <input type="checkbox" name="hobby" value="수영" id="swiming" />
+      <label for="swiming">수영</label>
+      <input type="checkbox" name="hobby" value="골프" id="golf" />
+      <label for="golf">골프</label>
+      <input type="checkbox" name="hobby" value="등산" id="climing" />
+      <label for="climing">등산</label>
+      <button id="send">전송</button>
+    </form>
+    <script>
+      const $button = document.getElementById('send');
+      console.log($button);
+      $button.addEventListener('click', handler, false);
+
+      function handler(evt) {
+        console.log(evt);
+        evt.preventDefault(); // 전송버튼의 화면 새로고침(디폴트)을 막음.
+        const $checkBoxes = document.querySelectorAll("input[type = 'checkbox']");
+
+        let choice = [];
+        for (let i = 0; i < $checkBoxes.length; i++) {
+          if ($checkBoxes[i].checked) {
+            choice.push($checkBoxes[i].value);
+            break;
+          }
+        }
+
+        let str = '';
+        if (choice.length > 0) {
+          for (let i = 0; i < choice.length; i++) {
+            // 마지막 요소가 아닌 경우 ', ' 추가
+            if (i != choice.length - 1) {
+              str += choice[i] + ', ';
+            } else {
+              str += choice[i];
+            }
+          }
+          alert(str + ' 선택됨!');
+        } else {
+          alert('취미를 선택하세요.');
+        }
+      }
+    </script>
+  </body>
+</html>

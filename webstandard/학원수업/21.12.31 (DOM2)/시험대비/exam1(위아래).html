@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>시험대비 연습(수정버튼)</title>
+  </head>
+  <body>
+    <input type="text" name="menu" id="menu" /><button id="addBtn">추가</button>
+    <ol class="bucketList">
+      <!-- <li class="item item1" id="id1">
+        menu1
+        <button class="delBtn">삭제</button><button class="upBtn">위로</button><button class="downBtn">아래로</button><button class="topBtn">맨위로</button><button class="bottomBtn">맨아래로</button>
+      </li> -->
+    </ol>
+
+    <script>
+      const $bucketList = document.querySelector('body'); // li의 부모 요소인 ol을 타겟팅
+
+      $bucketList?.addEventListener('click', click_f, false); // ol 박스 영역의 클릭 이벤트 감지
+      addBtn?.addEventListener('click', add_f, false); // 추가 버튼 (클릭)
+      menu?.addEventListener('keyup', add_f, false); // 추가 버튼 (엔터키)
+
+      function click_f(evt) {
+        // 수정버튼 누를 때
+        if (evt.target.classList.contains('renameBtn')) {
+          console.log('수정');
+
+          document.createElement('button');
+        }
+        // 수정 취소 버튼
+        if (evt.target.classList.contains('cancelBtn')) {
+          console.log('취소');
+
+          const $parent = evt.target.closest('div');
+          $bucketList.removeChild($parent); // 생성된 수정항목 지우기
+        }
+      }
+
+      function add_f(evt) {
+        if (!menu.value.trim().length) {
+          menu.value = '';
+          menu.focus();
+          return;
+        }
+
+        if (!(evt.keyCode == 13 || evt.target.tagName.toLowerCase() == 'button')) {
+          return;
+        }
+
+        // 1) 요소(element) 생성
+        const $li = document.createElement('li'); // <li></li>
+        const $renameBtn = document.createElement('button'); // <button></button>
+        const $delBtn = document.createElement('button'); // <button></button>
+        const $upBtn = document.createElement('button'); // <button></button>
+        const $downBtn = document.createElement('button'); // <button></button>
+        const $topBtn = document.createElement('button'); // <button></button>
+        const $bottomBtn = document.createElement('button'); // <button></button>
+
+        // 2) 속성 추가
+        $li.setAttribute('class', 'item item3');
+        $li.setAttribute('id', 'id3');
+        $renameBtn.setAttribute('class', 'renameBtn');
+        $delBtn.setAttribute('class', 'delBtn');
+        $upBtn.setAttribute('class', 'upBtn');
+        $downBtn.setAttribute('class', 'downBtn');
+        $topBtn.setAttribute('class', 'topBtn');
+        $bottomBtn.setAttribute('class', 'bottomBtn');
+
+        // 3) 컨텐츠 추가
+        $li.textContent = menu.value + ' ';
+        $renameBtn.textContent = '수정';
+        $delBtn.textContent = '삭제';
+        $upBtn.textContent = '위로';
+        $downBtn.textContent = '아래로';
+        $topBtn.textContent = '맨위로';
+        $bottomBtn.textContent = '맨아래로';
+
+        // 4) 부모요소에 자식요소로 추가
+        // const $parent = document.querySelector('ol.wrap');
+        $bucketList.appendChild($li);
+        $li.appendChild($renameBtn);
+        $li.appendChild($delBtn);
+        $li.appendChild($upBtn);
+        $li.appendChild($downBtn);
+        $li.appendChild($topBtn);
+        $li.appendChild($bottomBtn);
+      }
+
+      function renameContent() {
+        console.log('수정 함수!');
+
+        const $body = document.querySelector('body');
+        const $div = document.createElement('div');
+        const $input = document.createElement('input');
+        const $renameBtn = document.createElement('button'); // 수정 버튼
+        const $cancelBtn = document.createElement('button'); // 취소 버튼
+
+        $div.setAttribute('class', 'rename');
+        $input.setAttribute('class', 'renameText');
+        $renameBtn.setAttribute('class', 'confirmBtn');
+        $cancelBtn.setAttribute('class', 'cancelBtn');
+
+        $renameBtn.textContent = '수정확인';
+        $cancelBtn.textContent = '취소';
+
+        $body.appendChild($div);
+        $div.appendChild($input);
+        $div.appendChild($renameBtn);
+        $div.appendChild($cancelBtn);
+      }
+    </script>
+  </body>
+</html>

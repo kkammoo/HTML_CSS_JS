@@ -1,0 +1,55 @@
+@charset "uft-8";
+
+/* * { outline: 1px solid red;} */
+:root {
+  --height-size: 100px;
+}
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav {
+  background-color: blanchedalmond;
+  position: sticky;
+  top: 0;
+}
+
+nav a {
+  color: brown;
+}
+
+.depth1>li {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  width: var(--height-size);
+  height: 20px;
+  background-color: yellow;
+}
+
+.depth1>li:hover .depth2 {
+  display: block;
+}
+
+.depth2 {
+  display: none;
+  position: absolute;
+  width: var(--height-size);
+  top: 20px; left: 0;
+  background-color: aliceblue;
+}
+
+.add {
+  width: 100px;
+  height: 200px;
+  background-color: tomato;
+  color: white;
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+}

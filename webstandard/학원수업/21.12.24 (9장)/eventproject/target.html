@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul, li {
+      outline: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li id="item1">메뉴1</li>
+    <li id="item2">메뉴2</li>
+    <li id="item3">메뉴3</li>
+  </ul>
+  <script>
+    // 상위 요소에 이벤트 리스너를 등록하면 하위 요소에도 이벤트 리스너가 상속됨
+    const $ul = document.querySelector('ul');
+    const $li_1 = document.getElementById('item1');
+
+    $ul.addEventListener("click", function(evt){
+      console.log('캡쳐단계 : 클릭 :' + evt.target); // 이벤트가 일어난 요소의 DOM객체 출력
+      console.log('캡쳐단계 : 클릭 :' + evt.currentTarget); // 이벤트 리스너를 등록한 요소의 DOM객체 출력
+    }, true);
+
+    $li_1.addEventListener('click', function(){
+      console.log('캡쳐단계 : item1 클릭!');
+    }, true);
+
+    $ul.addEventListener("click", function(evt){
+      console.log('버블단계 : 클릭 :' + evt.target); // 이벤트가 일어난 요소의 DOM객체 출력
+      console.log('버블단계 : 클릭 :' + evt.currentTarget); // 이벤트 리스너를 등록한 요소의 DOM객체 출력
+    }, false);
+
+    $li_1.addEventListener('click', function(){
+      console.log('버블단계 : item1 클릭!'); // 이벤트 감지의 디폴트는 버블단계.
+    }, false);
+  </script>
+</body>
+</html>

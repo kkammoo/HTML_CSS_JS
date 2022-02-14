@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트 리스너 03 - 화살표 함수</title>
+  <script>
+    // const greet = (evt) => {
+    //   console.log(evt);
+    //   console.log('클릭!');
+    //   alert('클릭!');
+    //   const $button = evt.target;
+    //   $button.style.backgroundColor = 'yellow';
+    // }
+
+    // 매개변수가 1개일 땐 소괄호도 생략 가능. / 매개변수가 없거나 2개 이상인 경우엔 생략 안 됨.
+    const greet = evt => {
+      console.log(evt);
+      console.log('클릭!');
+      alert('클릭!');
+      const $button = evt.target;
+      $button.style.backgroundColor = 'yellow';
+    }
+    
+    const init = () => {
+      const $button = document.querySelector('button');
+      $button.addEventListener("click", greet);
+    }
+        
+    addEventListener("DOMContentLoaded", init);
+  </script>
+</head>
+<body>
+  <p>addEventListener() 사용</p>
+  <button>클릭</button>
+</body>
+</html>

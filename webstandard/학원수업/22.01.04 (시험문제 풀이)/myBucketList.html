@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>myBucketList</title>
+    <script src="노드생성함수.js"></script>
+  </head>
+  <body>
+    <input type="text" name="menu" id="menu" /><button id="addBtn">추가</button>
+    <ol class="bucketList">
+      <!-- <li class="item item1" id="id1">
+      menu1 
+      <button class='delBtn'>삭제</button>
+      <button class="upBtn">위로</button>
+      <button class="downBtn">아래로</button>
+      <button class="topBtn">처음으로</button>
+      <button class="bottomBtn">마지막로</button>
+    </li>
+    <li class="item item2" id="id2">
+      menu2 
+      <button class='delBtn'>삭제</button>
+      <button class="upBtn">위로</button>
+      <button class="downBtn">아래로</button>
+      <button class="topBtn">처음으로</button>
+      <button class="bottomBtn">마지막로</button>      
+    </li>
+    <li class="item item3" id="id3">
+      menu3 
+      <button class='delBtn'>삭제</button>
+      <button class="upBtn">위로</button>
+      <button class="downBtn">아래로</button>
+      <button class="topBtn">처음으로</button>
+      <button class="bottomBtn">마지막로</button>      
+    </li> -->
+    </ol>
+    <script>
+      const $bucketList = document.querySelector('.bucketList');
+
+      $bucketList?.addEventListener('click', click_f, false); //ul 박스영역의 클릭이벤트 감지
+      addBtn?.addEventListener('click', add_f, false); //항목 추가
+      menu?.addEventListener('keyup', add_f, false); //Enter키에 반응
+
+      list(); // 버킷리스트 목록출력하기
+
+      function click_f(evt) {
+        const $parent = document.querySelector('.bucketList');
+
+        //요소.closest(셀렉터) : 이벤트가 발생된 요소로부터 상위 요소탐색
+        const $toMove = evt.target.closest('li');
+
+        // 수정버튼 클릭시
+        if (evt.target.matches('.editBtn')) {
+          // 수정 모드 li태그 생성 <li><input class="editMode"><button>저장</button><button>취소</button></li>
+          const $liEle = makeElement(
+            'li',
+            { class: 'editMode' },
+            makeElement('input', null, $toMove.firstChild.textContent),
+            makeElement('button', { class: 'saveBtn' }, '저장'),
+            makeElement('button', { class: 'cancelBtn' }, '취소')
+          );
+
+          $bucketList.replaceChild($liEle, $toMove);
+
+          // 수정 저장
+          $liEle.querySelector('.saveBtn').addEventListener(
+            'click',
+            function () {
+              $toMove.firstChild.textContent = $liEle.querySelector('input').value;
+              $bucketList.replaceChild($toMove, $liEle);
+              // 로컬 저장소 변경
+              localStorage.setItem($toMove.dataset.key, $toMove.firstChild.textContent);
+            },
+            false
+          );
+
+          // 수정 취소
+          $liEle.querySelector('.cancelBtn').addEventListener(
+            'click',
+            function () {
+              $bucketList.replaceChild($toMove, $liEle);
+            },
+            false
+          );
+
+          //삭제버튼 클릭시
+        } else if (evt.target.matches('.delBtn')) {
+          //자식요소 제거하기
+          if ($toMove) {
+            if (confirm('삭제하시겠습니까?')) {
+              $parent.removeChild($toMove);
+              console.log($toMove.dataset.key);
+              localStorage.removeItem($toMove.dataset.key);
+            }
+          }
+          //위로버튼 클릭시
+        } else if (evt.target.matches('.upBtn')) {
+          const $target = $toMove.previousElementSibling;
+          $parent.insertBefore($toMove, $target);
+
+          //아래로버튼 클릭시
+        } else if (evt.target.matches('.downBtn')) {
+          const $target = $toMove.nextElementSibling;
+          if ($target) {
+            $target.insertAdjacentElement('afterend', $toMove);
+          } else {
+            //마지막 요소인경우 처음으로 이동
+            $parent.insertBefore($toMove, $parent.firstChild);
+          }
+          //처음으로 버튼 클릭시
+        } else if (evt.target.matches('.topBtn')) {
+          $parent.insertBefore($toMove, $parent.firstChild);
+
+          //마지막으로 버튼 클릭시
+        } else if (evt.target.matches('.bottomBtn')) {
+          $parent.insertBefore($toMove, null); // $parent.appendChild($toMove); 와 동일
+        }
+      }
+
+      function add_f(evt) {
+        //필수 입력체크
+        if (!menu.value.trim().length) {
+          menu.value = '';
+          menu.focus();
+          return;
+        }
+
+        //입력필드에 엔터키를 눌렀거나 삭제버튼 클릭이 아니면 실행 안함.
+        if (!(evt.keyCode == 13 || evt.target.nodeName.toLowerCase() == 'button')) {
+          return;
+        }
+
+        // 노드 생성 함수
+        const $liEle = makeElement(
+          'li',
+          { class: 'item item3', id: 'id3', 'data-key': new Date().toLocaleString() },
+          menu.value,
+          makeElement('button', { class: 'editBtn' }, '수정'),
+          makeElement('button', { class: 'delBtn' }, '삭제'),
+          makeElement('button', { class: 'upBtn' }, '위'),
+          makeElement('button', { class: 'downBtn' }, '아래'),
+          makeElement('button', { class: 'topBtn' }, '최상단'),
+          makeElement('button', { class: 'bottomBtn' }, '최하단')
+        );
+
+        // dom트리에 추가
+        $bucketList.appendChild($liEle);
+
+        // 로컬 저장소에 저장
+        const currTime = new Date().toLocaleString();
+        window.localStorage.setItem(currTime, menu.value);
+      }
+
+      // 저장소의 데이터 읽어와서 버킷리스트 출력하기
+      function list() {
+        //서브 dom생성
+        const $fragment = document.createDocumentFragment();
+
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          const value = localStorage.getItem(key);
+
+          const $liEle = makeElement(
+            'li',
+            { 'data-key': key },
+            value,
+            makeElement('button', { class: 'editBtn' }, '수정'),
+            makeElement('button', { class: 'delBtn' }, '삭제'),
+            makeElement('button', { class: 'upBtn' }, '위'),
+            makeElement('button', { class: 'downBtn' }, '아래'),
+            makeElement('button', { class: 'topBtn' }, '최상단'),
+            makeElement('button', { class: 'bottomBtn' }, '최하단')
+          );
+
+          $fragment.appendChild($liEle);
+        }
+        $bucketList.appendChild($fragment);
+      }
+    </script>
+  </body>
+</html>

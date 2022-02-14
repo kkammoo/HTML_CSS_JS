@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트 리스너 02 - 익명함수를 이벤트 핸들러 값으로</title>
+    <script>
+      function init() {
+        const $button = document.querySelector('button');
+        $button.onclick = function (evt) {
+          console.log(evt);
+          alert('반갑습니다');
+          console.log('반갑습니다');
+        };
+      }
+    </script>
+  </head>
+  <body onload="init()">
+    <div>DOM 객체의 이벤트 리스너 프로퍼티에 리스너 등록</div>
+    <button>클릭</button>
+  </body>
+</html>

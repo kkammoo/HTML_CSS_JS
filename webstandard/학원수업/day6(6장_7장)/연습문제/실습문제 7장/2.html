@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h3>정수 5개 입력받아 역순으로 출력</h3>
+  <hr>
+  <script>
+    const arr = []; // 또는 new Array();
+    // prompt 5번 반복
+    for(let i=0; i<5; i++){
+      arr[i] = prompt('정수 입력');
+    }
+    // 배열 출력
+    document.write('입력된 수의 배열'+'<br>');
+    for(let i=0; i<5; i++){
+      document.write(arr[i] + " ");
+    }
+    document.write('<hr>')
+    // 역순으로 배열
+    document.write('역순으로 재정렬된 배열'+'<br>');
+    arr.reverse();
+    for(let i=0; i<5; i++){
+      document.write(arr[i] + " ");
+    }
+  </script>
+</body>
+</html>

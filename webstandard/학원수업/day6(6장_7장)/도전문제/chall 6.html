@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h3>별 문자 출력하기</h3>
+  <hr>
+  <script>
+    // 정수 입력 받기
+    const count = prompt('정수를 입력하세요');
+
+    // 문자열 정수 변환
+    const star = parseInt(count);
+
+    // 별표 출력
+    function printStar(star) {
+      // 입력 값 유효성 검증
+      if (isNaN(star)) {
+        document.write('입력 오류 입니다.')
+      }
+
+      // 별표 출력하기
+      for (let i = 1; i <= star; i++) {
+        for (let j = 1; j <= i; j++) {
+          document.write('*');
+        }
+        document.write('<br>');
+      }
+    }
+    // 별표 출력 호출
+    printStar(star);
+  </script>
+</body>
+</html>

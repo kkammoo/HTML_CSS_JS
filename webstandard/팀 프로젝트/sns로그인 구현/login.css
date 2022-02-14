@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.form-floating {
+  width: 400px;
+}
+
+.login_Btn_Container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#naver_id_login img {
+  width: 210px;
+  height: 45px;
+}
+
+#kakao_id_login img {
+  width: 210px;
+  margin-top: 10px;
+  height: 42px;
+}
+
+.fb-login-button {
+  margin-top: 10px;
+}
+
+.g-signin2 {
+  width: 210px;
+  margin-top: 10px;
+}

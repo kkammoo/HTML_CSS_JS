@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>타이머 해제</button>
+    <button id="naver">네이버로 이동</button>
+    <script>
+      const timer = window.setTimeout(handler, 3000);
+      function handler() {
+        console.log('hi');
+      }
+
+      const $button = document.querySelector('button');
+      $button.addEventListener('click', function (evt) {
+        // setTimeout 해제
+        window.clearTimeout(timer);
+        console.log('타이머가 해제되었습니다.');
+      });
+
+      // case 1)
+      document.getElementById('naver').addEventListener('click', function () {
+        window.location = 'http://www.naver.com';
+      });
+
+      // case 2)
+      // naver.addEventListener('click', function() {
+      //   window.location = 'http://www.naver.com';
+      // });
+    </script>
+  </body>
+</html>

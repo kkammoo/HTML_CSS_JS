@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1) 함수 선언문 : 호출문 순서 상관x 선언만 하면 어느 위치에서든 호출이 가능.
+    function sum(v1, v2) {
+      return v1+v2;
+    }
+    console.log(sum(10,20)); // 함수 호출
+    const s = sum;           // 함수객체 참조
+    console.log(s(10,20));
+
+    // 2) 함수 표현식 : 함수 호출문이 표현식 다음에 와야 유효함.
+    const sum2 = function(v1, v2) {
+      return v1+v2;
+    }
+    console.log(sum2(10,20));
+    
+    // 3) 함수 표현식을 간단하게 표현(화살표 함수, 람다식 함수)
+    const sum3 = (v1, v2)=>{
+      return v1+v2;
+    }
+    console.log(sum3(10,20));
+
+    // 바디에 실행문이 한 줄인 경우, 중괄호와 리턴문을 생략할 수 있다.
+    // 매개변수가 1개일 경우, 소괄호도 생략할 수 있다.
+    // const sum3 = (v1, v2)=> v1+v2; 
+    // console.log(sum3(10,20));
+
+    // 4) 생성자함수
+    function Person(name, age){
+      this.name = name;
+      this.age = age;
+    }
+    Person('홍길동', 30); // 함수 호출
+    // new Person('홍길동', 30);  <- 객체 생성 *차이에 주의!
+  </script>
+</body>
+</html>

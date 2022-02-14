@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h3>아이템을 클릭하면 1.3배 크기로</h3>
+  <hr>
+  <p>여름 방학 때 하고 싶은 것들</p>
+  <ul>
+    <li id="li01">자전거로 대한민국 일주</li>
+    <li id="li02">책 100권 읽기</li>
+    <li id="li03">철인 3종 경기 준비</li>
+    <li id="li04">자바스크립트 정복</li>
+  </ul>
+  <script>
+    const $li01 = document.getElementById('li01');
+    const $li02 = document.getElementById('li02');
+    const $li03 = document.getElementById('li03');
+    const $li04 = document.getElementById('li04');
+
+    $li01.addEventListener('click', zoom1);
+    $li02.addEventListener('click', zoom2);
+    $li03.addEventListener('click', zoom3);
+    $li04.addEventListener('click', zoom4);
+
+    function zoom1(evt) {
+      console.log(evt);
+      $li01.style.fontSize = 1.3+'em';
+      $li02.style.fontSize = 1+'em';
+      $li03.style.fontSize = 1+'em';
+      $li04.style.fontSize = 1+'em';
+    }
+    function zoom2(evt) {
+      console.log(evt);
+      $li02.style.fontSize = 1.3+'em';
+      $li01.style.fontSize = 1+'em';
+      $li03.style.fontSize = 1+'em';
+      $li04.style.fontSize = 1+'em';
+    }
+    function zoom3(evt) {
+      console.log(evt);
+      $li03.style.fontSize = 1.3+'em';
+      $li01.style.fontSize = 1+'em';
+      $li02.style.fontSize = 1+'em';
+      $li04.style.fontSize = 1+'em';
+    }
+    function zoom4(evt) {
+      console.log(evt);
+      $li04.style.fontSize = 1.3+'em';
+      $li01.style.fontSize = 1+'em';
+      $li02.style.fontSize = 1+'em';
+      $li03.style.fontSize = 1+'em';
+    }
+  </script>
+</body>
+</html>

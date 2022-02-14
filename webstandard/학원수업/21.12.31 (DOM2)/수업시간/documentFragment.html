@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>documentFragment : 서브DOM 생성</title>
+  </head>
+  <body>
+    <ul class="wrap"></ul>
+    <script>
+      const $parent = document.querySelector('ul.wrap');
+
+      // case 1) 서브 DOM을 만들지 않고 DOM트리에 추가
+      // DOM객체가 새로 추가될 때마다 DOM트리가 새로고침됨
+
+      // let $li = document.createElement('li');
+      // $li.textContent = 'menu1';
+      // $parent.appendChild($li);
+
+      // $li = document.createElement('li');
+      // $li.textContent = 'menu2';
+      // $parent.appendChild($li);
+
+      // $li = document.createElement('li');
+      // $li.textContent = 'menu3';
+      // $parent.appendChild($li);
+
+      // ---------------------------------------------------------------------------------
+
+      // case 2) 서브 DOM 생성
+      // 서브 DOM을 활용하면 DOM트리 변경을 줄일 수 있어 퍼포먼스에 효과를 줌.
+
+      // const $fragment = document.createDocumentFragment(); // 서브 DOM 생성
+
+      // // 서브 DOM트리에 li요소를 추가
+      // let $li = document.createElement('li');
+      // $li.textContent = 'menu1';
+      // $fragment.appendChild($li);
+
+      // $li = document.createElement('li');
+      // $li.textContent = 'menu1';
+      // $fragment.appendChild($li);
+
+      // $li = document.createElement('li');
+      // $li.textContent = 'menu1';
+      // $fragment.appendChild($li);
+
+      // $parent.appendChild($fragment); // 해당 서브 DOM트리를 자식 요소로 추가
+
+      // ---------------------------------------------------------------------------------
+
+      // case 3) 서브 DOM + 노드 복사
+
+      const $fragment = document.createDocumentFragment(); // 서브 DOM 생성
+      let $li = document.createElement('li');
+      $li.textContent = 'menu1';
+      $fragment.appendChild($li);
+
+      let $copied = $li.cloneNode(true);
+      $copied.textContent = 'menu2';
+      $fragment.appendChild($copied);
+
+      $copied = $li.cloneNode(true);
+      $copied.textContent = 'menu3';
+      $fragment.appendChild($copied);
+
+      const $fragment2 = $fragment.cloneNode(true);
+
+      $parent.appendChild($fragment);
+      $parent.appendChild($fragment2);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+.container {
+  background-color: beige;
+  height: 100vh;
+  display: flex;
+  
+  flex-direction: row; 
+  /* row : 왼쪽 -> 오른쪽 정렬 | row-reverse : 오른쪽 -> 왼쪽 정렬 (컨텐츠의 순서 또한 역순으로 바뀜) */
+  /* column : 위 -> 아래 정렬 | column-reverse : 아래 -> 위 정렬 */
+
+  flex-wrap: nowrap; 
+  /* 기본값은 nowrap. wrap을 사용하면 뷰포트 길이를 넘어갈 때 자동으로 다음 행으로 이동함. */
+  
+  /* flex-flow: row nowrap; flex-direction이랑 flex-wrap을 합친 기능 */
+
+  justify-content: space-around;
+  /* justify-content : 중심축에서 아이템을 배치 */
+  /* (row) flex-start : 왼쪽에 붙이기 | flex-end : 오른쪽에 붙이기 (row-reverse와는 달리 컨텐츠 순서가 안 바뀌고 오른쪽에 붙음)*/
+  /* (column) flex-start : 위쪽에 붙이기 | flex-end : 아래쪽에 붙이기 */
+  /* space-around : 컨텐츠마다 간격을 두고 띄우기.*/
+  /* space-even : 컨텐츠의 간격 비율을 똑같이 맞춰서 띄우기 */
+  /* space-between : 양 끝은 포트에 붙이고 사이에 있는 컨텐츠들의 간격을 일정하게*/
+
+  align-items: center;
+  /* align-items : 반대축에서 아이템의 상태 지정 */
+
+  align-content: space-between;
+  /* align-content : 반대축에서 아이템을 배치 */
+}
+
+.item {
+  width: 40px; height: 40px;
+  border: 1px solid black;
+}
+
+.item1 {
+  background-color: #ef9a9a;
+}
+.item2 {
+  background-color: #f48fb1;
+}
+.item3 {
+  background-color: #ce93d8;
+}
+.item4 {
+  background-color: #b39ddb;
+}
+.item5 {
+  background-color: #90caf9;
+}
+.item6 {
+  background-color: #a5d6a7;
+}
+.item7 {
+  background-color: #e6ee9c;
+}
+.item8 {
+  background-color: #b39ddb;
+}
+.item9 {
+  background-color: #f48fb1;
+}
+.item10 {
+  background-color: #ef9a9a;
+}

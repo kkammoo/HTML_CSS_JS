@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>체크박스 토글</title>
+  </head>
+  <body>
+    <input type="checkbox" name="" id="" class="toggle" /> 체크박스
+    <button class="detail">상세</button>
+    <script>
+      const $detail = document.querySelector('.detail');
+      $detail.addEventListener('click', Chk);
+
+      function Chk(evt) {
+        const $toggle = document.querySelector('.toggle');
+        if ($toggle.checked == false) {
+          $toggle.checked = true;
+        } else {
+          $toggle.checked = false;
+        }
+      }
+    </script>
+  </body>
+</html>

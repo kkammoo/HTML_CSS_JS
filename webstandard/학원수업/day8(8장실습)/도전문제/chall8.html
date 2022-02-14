@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>겜블링 게임</title>
+  <style>
+   table {
+    font-size: 50px;
+    background-color: bisque;
+   }
+   td {
+     padding: 20px;
+   }
+  </style>
+</head>
+<body>
+  <h3>겜블링 게임</h3>
+  <p>각 숫자를 클릭하면 0에서 2사이의 난수로 바뀝니다. 모두 같은 수가 나오면 승리합니다.</p>
+  <hr>
+  <table>
+    <td id="num1" onclick="slot1()">0</td>
+    <td id="num2" onclick="slot2()">0</td>
+    <td id="num3" onclick="slot3()">0</td>
+  </table>
+  <script>
+    function slot1(){
+      const slot = document.getElementById("num1");
+      const num1 = Math.floor(Math.random()*3);
+      slot.innerHTML = num1;
+    }
+    function slot2(){
+      const slot = document.getElementById("num2");
+      const num2 = Math.floor(Math.random()*3);
+      slot.innerHTML = num2;
+    }
+    function slot3(){
+      const slot = document.getElementById("num3");
+      const num3 = Math.floor(Math.random()*3);
+      slot.innerHTML = num3;
+
+      if (slot1.num1 == slot2.num2 && slot2.num2 == slot3.num3){
+        const $td = document.getElementById(num3);
+        const $table = $td.parentElement;
+        const $p = document.createElement('p');
+        $p.innerHTML = 'Success';
+        $table.appendChild($p)
+      } else {
+        const $td = document.getElementById(num3);
+        const $table = $td.parentElement;
+        const $p = document.createElement('p');
+        $p.innerHTML = 'fail';
+        $table.appendChild($p)
+      }
+    }
+  </script>
+</body>
+</html>

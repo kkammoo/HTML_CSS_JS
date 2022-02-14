@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="button">버튼1</button>
+  <button id="button2">버튼2</button>
+  <button id="button3" onclick="">버튼3</button>
+  <script>
+    const $button = document.getElementById('button');
+    $button.addEventListener('click', function(){alert('one')});
+    $button.addEventListener('click', function(){alert('two')});
+    $button.addEventListener('click', function(){alert('three')});
+    
+    const $button2 = document.getElementById('button2');
+    $button.onclick = function(){alert('one')};
+    $button.onclick = function(){alert('two')};
+    $button.onclick = function(){alert('three')};
+
+  </script>
+</body>
+</html>

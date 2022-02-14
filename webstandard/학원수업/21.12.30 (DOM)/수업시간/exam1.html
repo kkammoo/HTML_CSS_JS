@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" name="menu" id="menu" /><button id="addBtn">추가</button>
+    <ul class="bucketList">
+      <li class="item item1" id="id1">
+        menu1
+        <button class="delBtn">삭제</button>
+        <button class="upBtn">위로</button>
+        <button class="downBtn">아래로</button>
+      </li>
+      <li class="item item2" id="id2">
+        menu2
+        <button class="delBtn">삭제</button>
+        <button class="upBtn">위로</button>
+        <button class="downBtn">아래로</button>
+      </li>
+      <li class="item item3" id="id3">
+        menu3
+        <button class="delBtn">삭제</button>
+        <button class="upBtn">위로</button>
+        <button class="downBtn">아래로</button>
+      </li>
+    </ul>
+
+    <script>
+      const $bucketList = document.querySelector('.bucketList'); // li의 부모 요소인 ul을 타겟팅
+
+      $bucketList?.addEventListener('click', click_f, false); // ul 박스 영역의 클릭 이벤트 감지
+      addBtn?.addEventListener('click', add_f, false); // 추가 버튼 (클릭)
+      menu?.addEventListener('keyup', add_f, false); // 추가 버튼 (엔터키)
+
+      function click_f(evt) {
+        // 삭제버튼 클릭시
+        if (evt.target.classList.contains('delBtn')) {
+          // 클래스 값을 타겟팅 (이벤트.target.classList)
+          console.log(evt);
+          // 자식 요소 찾기
+          const $child = evt.target.closest('li'); // 요소.closest(셀렉터) : 가장 가까운 상위 요소(셀렉터) 탐색
+          // 자식 요소 제거
+          if ($child) {
+            if (confirm('삭제하시겠습니까?')) {
+              $bucketList.removeChild($child);
+            }
+          }
+        }
+      }
+
+      function add_f(evt) {
+        if (!menu.value.trim().length) {
+          menu.value = '';
+          menu.focus();
+          return;
+        }
+
+        if (!(evt.keyCode == 13 || evt.target.tagName.toLowerCase() == 'button')) {
+          return;
+        }
+
+        // 1) 요소(element) 생성
+        const $li = document.createElement('li'); // <li></li>
+        const $delBtn = document.createElement('button'); // <button></button>
+        const $upBtn = document.createElement('button'); // <button></button>
+        const $downBtn = document.createElement('button'); // <button></button>
+
+        // 2) 속성 추가
+        $li.setAttribute('class', 'item item3');
+        $li.setAttribute('id', 'id3');
+        $delBtn.setAttribute('class', 'delBtn');
+        $upBtn.setAttribute('class', 'upBtn');
+        $downBtn.setAttribute('class', 'downBtn');
+
+        // 3) 컨텐츠 추가
+        $li.textContent = menu.value + ' ';
+        $delBtn.textContent = '삭제';
+        $upBtn.textContent = '위로';
+        $downBtn.textContent = '아래로';
+
+        // 4) 부모요소에 자식요소로 추가
+        // const $parent = document.querySelector('ul.wrap');
+        $bucketList.appendChild($li);
+        $li.appendChild($delBtn);
+        $li.appendChild($upBtn);
+        $li.appendChild($downBtn);
+      }
+    </script>
+  </body>
+</html>

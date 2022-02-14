@@ -1,0 +1,13 @@
+@charset "uft=8";
+@import url(4.css);
+
+article {
+  background-color: pink;
+  margin: 10px;
+}
+
+p>span {
+  font-weight: bold;
+  font-family: "고딕체";
+  color:blue;
+}

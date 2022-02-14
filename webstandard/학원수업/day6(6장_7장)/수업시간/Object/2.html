@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 리터럴 표기법{}으로 객체 만들기
+    // case 1 : 동적으로 프로퍼티 추가
+    const person = {}; // 빈객체 생성
+    
+    // 빈객체에 프로퍼티, 메소드 부여
+    person.name = '홍길동';
+    person.age = 30;
+    person.smile = smile; // smile 함수에 대한 주소값을 가지고 있는 참조변수. 참조변수 대신, 메소드 함수가 와도 된다.
+    person.eat = eat;
+
+    function smile(){
+      console.log(this.name + '가 웃다');
+    }
+    function eat(){
+      console.log(this.name + '가 먹다');
+    }
+
+    person.smile(); // ()가 붙으면 해당 메소드를 호출한다는 의미.
+    person.eat();
+    console.log(person.name);
+    console.log(person.age);
+    
+    // case 2 : 정적으로 프로퍼티 추가 : 1회성으로 객체를 생성할 때 자주 사용하는 방법
+    const person2 = {
+      name : '홍길순',
+      age : 20,
+      smile : function (){
+        console.log(this.name + '가 웃다');
+      },
+      eat : function (){
+        console.log(this.name + '가 먹다');
+      }
+    };
+    person2.smile();
+    person2.eat();
+    console.log(person2.name);
+    console.log(person2.age);
+
+  </script>
+</body>
+</html>

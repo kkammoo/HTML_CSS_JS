@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>홀수행 짝수행 지정 nth-child</title>
+<style>
+  ul > li:nth-child(1) { /* html 흐름에 해당하는 순서 중 해당 라인 타겟팅 */
+    background-color: blue;
+  }
+  ul > li:nth-child(even) { /* 짝수행만 타겟팅(even), 홀수행만 타겟팅(odd) */
+    background-color: green;
+  }
+  ul > li:nth-child(3n) { /* 출력하고 싶은 라인의 순서가 규칙이 있다면 식을 넣을 수도 있다. (ex-3의배수. n은 0부터 시작.) */
+    background-color: red;
+  }
+</style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li>line1</li>
+      <li>line2</li>
+      <li>line3</li>
+      <li>line4</li>
+      <li>line5</li>
+      <li>line6</li>
+      <li>line7</li>
+    </ul>
+  </nav>
+</body>
+</html>

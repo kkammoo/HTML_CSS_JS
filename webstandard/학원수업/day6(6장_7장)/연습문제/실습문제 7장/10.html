@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>book 객체 배열 만들기</title>
+</head>
+<body>
+  <h3>book 객체 배열 만들기</h3>
+  <hr>
+  <script>
+    const bookArray = []; // book 객체를 담는 배열
+    
+    // 책 5권 입력받기
+    for(let i=0; i<5; i++){
+      const input = prompt('콤마(,)로 분리하면서 책제목 저자 가격 순으로 입력');
+      // 콤마를 구분자로 하여 배열에 담기
+      const array = input.split(',');
+      // 배열 요소를 읽어와 book 객체 만들기
+      const book = new Object();
+      book.title = array[0];
+      book.author = array[1];
+      book.price = array[2];
+      // book 객체 bookArray에 담기
+      bookArray[i] = book;
+    }
+
+    // bookArray 배열에 담긴 book 객체 리스트 출력하기
+    for(let i = 0; i<bookArray.length; i++){
+      document.write(bookArray[i].title + ',');
+      document.write(bookArray[i].author + ',');
+      document.write(bookArray[i].price + '<br>');
+    }
+
+    // book 객체 중 가장 비싼 도서 이름 출력하기
+    let max = bookArray[0];
+    for (let i = 0; i<bookArray.length; i++){
+      if(max.price < bookArray[i]){
+        max = bookArray[i];
+      }
+    }
+    document.write('<hr>')
+    document.write('가장 가격이 비싼 책은 ' + max.title);
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>애니메이션</title>
+<style>
+@keyframes bomb {
+  from { font-size : 1em;}
+  to { font-size : 5em;}
+}
+@keyframes textcolor {
+  0% {color: blue;}
+  30% {color: green;}
+  100% {color: red;}
+}
+h3 {
+  animation-name : bomb; /* 애니메이션 이름 */
+	animation-duration : 1s; /* 애니메이션 실행시간 */
+	animation-iteration-count : infinite; /* 애니메이션 반복횟수 */
+  animation-direction: alternate; /* 애니메이션 방향 */
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); /* 애니메이션 실행 가속도 */
+}
+span {
+  animation-name : textcolor;
+	animation-duration : 1s;
+	animation-iteration-count : infinite;
+  animation-direction: alternate;
+}
+</style></head>
+<body>
+<h3>꽝!</h3>
+<hr>
+<p><span>꽝!</span> 글자가 3초동안 500%에서
+시작하여 100%로 바뀌는
+<span>애니메이션</span>입니다. 무한 반복합니다.</p>
+</body>
+</html>

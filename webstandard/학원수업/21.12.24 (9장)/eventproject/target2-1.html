@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul, li {
+      outline: 1px solid red;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <p>test</p>
+    <li id="item1">menu1<span>메뉴</span></li>
+    <li id="item2">menu2</li>
+    <li id="item3">menu3</li>
+    <li id="item4">menu4</li>
+    <li id="item5">menu5</li>
+  </ul>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", init)
+    
+    function init() {
+      const $item = document.querySelector('ul'); // 상위 요소에 이벤트 리스너 등록
+        $item.addEventListener("click", handler);
+      }
+    
+    function handler(evt) {
+      if (evt.target.nodeName == 'LI'){ // ul에 속한 전체 요소가 아닌, li에서만 이벤트가 일어나도록 if문으로 li 타켓팅 
+        console.log(evt);
+        console.log(evt.target.innerHTML); // 타겟팅 태그 내부의 HTML내용까지 출럭
+        console.log(evt.target.textContent); // 타켓팅 태그 내부의 텍스트만 출력
+      }
+    }
+  </script>
+</body>
+
+</html>

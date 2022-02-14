@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>appendChild, insertBefore 연습</title>
+  </head>
+  <body>
+    <ul>
+      <li class="item1">menu1</li>
+      <li class="item2">menu2</li>
+      <li class="item3">menu3</li>
+    </ul>
+    <script>
+      // 1) menu4를 menu3 아래로 추가하기 (appendChild)
+      // 부모 요소.appendChild(자식 요소);
+      {
+        const $li = document.createElement('li');
+        $li.setAttribute('class', 'item4');
+        $li.textContent = 'menu4';
+
+        const $parent = document.querySelector('ul');
+        $parent.appendChild($li);
+      }
+
+      // 2) menu5를 menu2 위에 삽입하기 (insertBefore)
+      // 부모 요소.insertBefore(삽입할 요소, 대상 요소);
+      {
+        const $li = document.createElement('li');
+        $li.setAttribute('class', 'item5');
+        $li.textContent = 'menu5';
+
+        const $parent = document.querySelector('ul');
+        $parent.insertBefore($li, $parent.querySelector('.item2'));
+      }
+
+      // 3) menu6을 menu3 아래로 추가하기 (insertBefore)
+      // 부모 요소.insertBefore(삽입할 요소, null); = 부모 요소.appendChild(자식 요소);
+      {
+        const $li = document.createElement('li');
+        $li.setAttribute('class', 'item6');
+        $li.textContent = 'menu6';
+
+        const $parent = document.querySelector('ul');
+        $parent.insertBefore($li, null); // $parent.appendChild($li)와 동일한 효과
+      }
+
+      // 4) 이미 존재하는 노드를 appendChild, insertBefore 사용하면 이동하는 효과
+      // 이미 존재하는 menu2 부모 요소의 마지막으로 이동
+      {
+        const $toMove = document.querySelector('.item2');
+        const $parent = document.querySelector('ul');
+        $parent.appendChild($toMove); // 맨 뒤로 이동한 것 같은 효과
+      }
+      // 이미 존재하는 menu5를 부모 요소의 자식 요소 menu6 앞으로 이동
+      {
+        const $toMove = document.querySelector('.item5');
+        const $toTarget = document.querySelector('.item6');
+        const $parent = document.querySelector('ul');
+        $parent.insertBefore($toMove, $toTarget);
+      }
+
+      // 5) 이미 존재하는 노드를 부모 요소의 처음으로 이동
+      // menu5를 부모 요소의 첫 번째 자식 요소로 이동
+      {
+        const $toMove = document.querySelector('.item5');
+        const $parent = document.querySelector('ul');
+        $parent.insertBefore($toMove, $parent.firstChild);
+      }
+
+      // 6) 이미 존재하는 요소를 새로운 요소로 교체
+      // 부모 요소.replaceChild(새로운 요소, 이미 존재하는 요소);
+      {
+        const $parent = document.querySelector('li.item5');
+        const $oldEle = $parent.firstChild; // item5 li의 텍스트 컨텐츠를 타겟팅
+
+        const $input = document.createElement('input'); // input요소를 생성하는 변수
+        $input.value = $oldEle.textContent;
+        $input.size = $input.value.length;
+        $parent.replaceChild($input, $oldEle); // 텍스트 컨텐츠를 input요소로 교체
+      }
+
+      // 추가로 해보기
+      // 7) menu4에 체크박스 만들기
+      {
+        const $oldEle = document.querySelector('li.item4').firstChild; // item4 li의 텍스트 컨텐츠를 타겟팅
+
+        const $chkBox = document.createElement('input'); // input요소를 생성하는 변수
+        $chkBox.setAttribute('type', 'checkbox'); // type속성을 checkbox로
+        $oldEle.before($chkBox); // 텍스트 컨텐츠 앞에 형제 요소로 input:c 추가 <li><input type="checkbox">menu4</li>
+      }
+    </script>
+  </body>
+</html>

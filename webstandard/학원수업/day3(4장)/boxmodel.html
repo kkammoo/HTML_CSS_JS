@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>boxmodel</title>
+  <style>
+    * {outline: 1px solid red} /* *로 지정하면 전체 컨텐츠에 적용 */
+    div {
+      width: 200px; height: 200px;
+      box-sizing: border-box; /* 디폴트는 content-box. 적용하면 컨텐트의 사이즈가 작아짐. width/height 사이즈를 어디까지 적용할 것인가. */
+      background-image: url(/media/4장/media/spongebob.png);
+      background-size: 100px;
+    }
+    .box1 {
+      background-color: yellow;
+      padding: 10px;
+      border: 10px solid gray;
+      margin-bottom: 5px;
+    }
+    .box2 {
+      background-color: blue;
+    }
+    .box3 {
+      background-color: pink;
+      border: 10px solid  greenyellow;
+      padding: 20px;
+      padding: 10px 30px; /* x축, y축 */
+      padding: 10px 20px 30px; /* top, x축, y축 */
+      padding: 10px 20px 30px 40px; /* top, right, bottom, left */
+    }
+    .box4 {
+      box-shadow: 5px 5px 1px 1px rgb(0, 0, 0, .2); /* rgb 마지막은 투명도 */
+    }
+  </style>
+</head>
+<body>
+  <div class="box1">box1</div>
+  <div class="box2">box2</div>
+  <div class="box3">box3</div>
+  <div class="box4">box4</div>
+</body>
+</html>

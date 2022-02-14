@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 10-1)
+    function addAnswer(obj, text){
+      const $parant = obj.parentElement; // 이벤트가 일어나는 태그의 부모태그 타겟팅 (button의 부모요소인 div)
+      if ($parant.lastElementChild != obj){ // div 태그의 마지막 자식태그가 p태그면 추가로 생성 안 함.
+        return;
+      }
+      const $p = document.createElement('p'); // p태그 생성
+      $p.innerHTML = text; // p태그의 컨텐츠로 text를 넣음
+      $p.setAttribute("id", "ans1"); // 생성된 p태그의 속성으로 id = "ans1"을 추가
+
+      // 10-2) 생성돤 p태그를 클릭하면 삭제하는 기능 추가
+        $p.onclick = function(){
+          const $parant = this.parentElement;
+          $parant.removeChild(this);
+        }
+        
+      $parant.appendChild($p); // 타겟팅 된 부모 태그(div)의 자식태그로 태그 생성
+    }
+  </script>
+</head>
+<body>
+  <h3>정답의 동적 삽입</h3>
+  <hr>
+  <div>
+    <p>Q. 거울아 거울아 세상에서 누가 제일 예쁘니?</p>
+    <button onclick="addAnswer(this, '백설공주')">답 보기</button>
+  </div>
+  <div>
+    <p>Q. 죽느냐 사느냐 어떤 것이 문제인가?</p>
+    <button onclick="addAnswer(this, '둘 다')">답 보기</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>더하기</title>
+<script>
+  function add() {
+    const $inputs = document.querySelectorAll('input');
+    const result = parseInt($inputs[0].value) + parseInt($inputs[1].value);
+    console.log(result);
+    const $span = document.getElementById('result');
+    $span.innerHTML = result;
+  }
+  function cancle() {
+    const $span = document.getElementById('result');
+    $span.innerHTML = "";
+    
+  }
+</script>
+</head>
+<body>
+  <form action="">
+    <div><input type="text"> + <input type="text">=<span id="result"></span></div>
+    <div>
+      <input type="button" value="정답" onclick="add()">
+      <input type="reset" value="리셋" onclick="cancle()">
+    </div>
+  </form>
+</body>
+</html>

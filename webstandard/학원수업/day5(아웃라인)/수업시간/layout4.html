@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* * { outline: 1px solid red;} */
+    body {
+      margin: 0;
+    }
+
+    .container {
+      width: 800px;
+      margin: 0 auto;
+    }
+    /* uppermost menu */
+    .container-upm {
+      background-color: #FFBD93;
+      width: 100%; height: 50px;
+      line-height: 50px;
+    }
+    /* header */
+    .container-h {
+      background-color: #FFBFBF;
+      width: 100%; height: 50px;
+      text-align: center;
+      line-height: 50px;
+    }
+    /* nav */
+    .nav {
+      background-color: #FF878A; 
+      height: 40px;
+      line-height: 40px;
+    }
+    /* main */
+    main {
+      background-color: #71DDCB;
+    }
+    .container-sc {
+      text-align: center;
+      outline: 5px solid black;
+      overflow: auto;
+    }
+    .container-sc .sidebar {
+      background-color: #522500; 
+      float: left;
+      width: 30%; height: 300px;
+      line-height: 300px;
+    }
+    .container-sc .content {
+      background-color: #00755E; 
+      float: left;
+      width: 70%; height: 300px;
+      line-height: 300px;
+    }
+    /* footer */
+    .container-f {
+      background-color: #DFE0DF; 
+      width: 100%; height: 50px;
+      text-align: center;
+      line-height: 50px;
+      clear: both;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="uppermost">
+    <div class="container container-upm">Log-in &nbsp; | &nbsp; Event Sale</div>
+ </div><!-- uppermost menu -->
+
+ <div class="header">
+    <div class="container container-h">header</div>
+ </div><!-- //header -->
+
+ <div class="nav">
+    <div class="container container-n">menu1 &nbsp;&nbsp; menu2 &nbsp;&nbsp; menu3 &nbsp;&nbsp; menu4 &nbsp;&nbsp; menu5</div>
+ </div><!-- //nav -->
+
+ <main>
+    <div class="container container-sc">
+       <div class="sidebar">sidebar</div>
+       <div class="content">content</div>
+    </div>
+ </main><!-- //content -->
+
+ <div class="clear"></div>
+ <div class="footer">
+    <div class="container container-f">footer</div>
+ </div><!-- //footer -->
+</body>
+</html>
