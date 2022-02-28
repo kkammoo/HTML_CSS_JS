@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>검색 결과 필터링</title>
+    <script src="https://kit.fontawesome.com/ea86d4ef73.js" crossorigin="anonymous"></script>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    a:link {
+      color: #222;
+      text-decoration: none;
+    }
+    a:visited {
+      color: #222;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #222;
+      text-decoration: none;
+    }
+    a:active {
+      color: #222;
+      text-decoration: none;
+    }
+
+    .filter_wrap {
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 100px; /* 보기 편하도록 임시로 넣음 */
+      padding: 30px 30px 0 30px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .title_wrap {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 30px;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .btnImg {
+      font-size: 18px;
+    }
+
+    .filter_list {
+      border-top: 1px solid #ddd;
+    }
+
+    .filter_list_contents {
+      list-style: none;
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      padding: 30px 0;
+    }
+
+    .filter_list_contents > li {
+      width: 20%;
+      height: 35px;
+      line-height: 35px;
+    }
+
+    li > a {
+      display: block;
+      text-decoration: none;
+      background-color: #f4f4f1;
+    }
+
+    li > a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <body>
+    <div class="filter_wrap">
+      <div class="title_wrap">
+        <p class="title">검색 결과 필터링</p>
+        <a href="#" role="button" class="filter_toggle"><i class="btnImg fa-solid fa-angle-down"></i></a>
+      </div>
+      <div class="filter_list" style="display: none">
+        <ul class="filter_list_contents">
+          <li><a href="#" role="button" class="filter_btn">최신순</a></li>
+          <li><a href="#" role="button" class="filter_btn">거리순</a></li>
+          <li><a href="#" role="button" class="filter_btn">가나다순</a></li>
+          <li><a href="#" role="button" class="filter_btn">기타등등</a></li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      // <필터링 조건 열고 닫기>
+      const toggle = document.querySelector('.filter_toggle'); // 필터링 토글
+      const btnImg = document.querySelector('.btnImg'); // 화살표 버튼 이미지 (i태그)
+
+      // 클릭 이벤트 생성
+      toggle.addEventListener('click', (evt) => {
+        // a태그 기본 작업 없애기
+        evt.preventDefault();
+
+        // <필터링 리스트 열기>
+        if (btnImg.getAttribute('class') == 'btnImg fa-solid fa-angle-down') {
+          // 버튼 모양 변경
+          btnImg.removeAttribute('class');
+          btnImg.setAttribute('class', 'btnImg fa-solid fa-angle-up');
+
+          // 필터링 리스트 display block으로 변경
+          document.querySelector('.filter_list').style.display = 'block';
+
+          // </필터링 리스트 열기>
+          // <필터링 리스트 닫기>
+        } else if (btnImg.getAttribute('class') == 'btnImg fa-solid fa-angle-up') {
+          // 버튼 모양 변경
+          btnImg.removeAttribute('class');
+          btnImg.setAttribute('class', 'btnImg fa-solid fa-angle-down');
+
+          // 필터링 리스트 display none으로 변경
+          document.querySelector('.filter_list').style.display = 'none';
+
+          // </필터링 리스트 닫기>
+        }
+      });
+      // </필터링 조건 열고 닫기>
+
+      // <필터링 리스트 버튼 활성화 시 배경색 변경>
+      const btnList = document.querySelectorAll('.filter_btn'); // 검색 필터 컨텐츠 목록 배열
+
+      // 클릭 이벤트 생성
+      btnList[0].addEventListener('click', (evt) => {
+        btnList[0].style.backgroundColor = '#f4e04b';
+        btnList[1].style.backgroundColor = '#f4f4f1';
+        btnList[2].style.backgroundColor = '#f4f4f1';
+        btnList[3].style.backgroundColor = '#f4f4f1';
+      });
+      btnList[1].addEventListener('click', (evt) => {
+        btnList[0].style.backgroundColor = '#f4f4f1';
+        btnList[1].style.backgroundColor = '#f4e04b';
+        btnList[2].style.backgroundColor = '#f4f4f1';
+        btnList[3].style.backgroundColor = '#f4f4f1';
+      });
+      btnList[2].addEventListener('click', (evt) => {
+        btnList[0].style.backgroundColor = '#f4f4f1';
+        btnList[1].style.backgroundColor = '#f4f4f1';
+        btnList[2].style.backgroundColor = '#f4e04b';
+        btnList[3].style.backgroundColor = '#f4f4f1';
+      });
+      btnList[3].addEventListener('click', (evt) => {
+        btnList[0].style.backgroundColor = '#f4f4f1';
+        btnList[1].style.backgroundColor = '#f4f4f1';
+        btnList[2].style.backgroundColor = '#f4f4f1';
+        btnList[3].style.backgroundColor = '#f4e04b';
+      });
+      // </필터링 리스트 버튼 활성화 시 배경색 변경>
+    </script>
+  </body>
+</html>
